@@ -1,8 +1,8 @@
 import './App.css';
 import { useState } from 'react';
 import { RiCloseCircleLine } from "react-icons/ri";
-import {AiTwotoneEdit} from 'react-icons/ai'
-
+import { AiTwotoneEdit } from 'react-icons/ai'
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   const [input, setInput] = useState("");
@@ -11,19 +11,23 @@ function App() {
 
   const addTodo = () => {
     if (input.length === 0) {
+      toast.error("Todo can't be empty");
       return;
     }
     if (data.includes(input)) {
-      return
+      toast.error("Same Todo can't be add");
+      return;
     }
 
     if (edit) {
+      console.log(edit)
       const f = data.map((el) => {
         if (el === edit) return input
         else return el
       })
       setEdit(false);
       setData(f);
+      toast.success("Edit Todo Succesfully")
     }
     else {
       setData([...data, input]);
@@ -80,6 +84,7 @@ function App() {
           )
         })
       }
+      <Toaster />
     </div>
   );
 }
