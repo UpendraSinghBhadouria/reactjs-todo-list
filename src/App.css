@@ -108,3 +108,18 @@ h1 {
   align-self: center;
   background-color: black;
 }
+
+@media screen and (max-width: 768px) {
+  .todo-input{
+    width: 200px;
+  }
+  .todo-app{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .todo-app{
+    width: 100%;
+  }
+}
